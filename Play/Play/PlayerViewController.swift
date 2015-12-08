@@ -130,7 +130,18 @@ class PlayerViewController: UIViewController {
         let track = tracks[currentIndex]
         let url = NSURL(string: "https://api.soundcloud.com/tracks/\(track.id)/stream?client_id=\(clientID)")!
         // FILL ME IN
-    
+        
+        if(player.currentItem == nil) {
+            player.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: url))
+        }
+        
+        if (sender.selected) {
+            player.pause();
+        } else {
+            player.play();
+        }
+        
+        sender.selected = !sender.selected
     }
     
     /* 
